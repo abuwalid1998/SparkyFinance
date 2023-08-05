@@ -3,8 +3,6 @@ package Models;
 
 import lombok.*;
 
-import java.io.File;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
