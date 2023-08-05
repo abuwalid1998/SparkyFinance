@@ -51,6 +51,11 @@
 			<version>3.3.2</version>
 		</dependency>
 		<dependency>
+			<groupId>com.crealytics</groupId>
+			<artifactId>spark-excel_2.12</artifactId>
+			<version>0.13.7</version> <!-- Replace with the appropriate version for your Spark and Scala version -->
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
