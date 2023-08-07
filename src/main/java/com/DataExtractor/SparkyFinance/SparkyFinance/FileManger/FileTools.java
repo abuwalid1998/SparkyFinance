@@ -1,4 +1,4 @@
-package FileManger;
+package com.DataExtractor.SparkyFinance.SparkyFinance.FileManger;
 
 
 import lombok.NoArgsConstructor;

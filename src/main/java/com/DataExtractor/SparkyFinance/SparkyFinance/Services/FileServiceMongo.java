@@ -1,7 +1,7 @@
-package Services;
+package com.DataExtractor.SparkyFinance.SparkyFinance.Services;
 
-import Interfaces.MongoFileRepository;
-import Models.FileEntity;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Interfaces.MongoFileRepository;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Models.FileEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,12 +1,12 @@
-package Controller;
+package com.DataExtractor.SparkyFinance.SparkyFinance.Controller;
 
 
-import FileManger.FileTools;
-import Models.ResponseMessage;
-import Models.SparkyConfig;
-import Services.FileServiceMongo;
-import Services.SparkDataManeger;
-import Services.SparkyInitializer;
+import com.DataExtractor.SparkyFinance.SparkyFinance.FileManger.FileTools;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Models.ResponseMessage;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Models.SparkyConfig;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Services.FileServiceMongo;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Services.SparkDataManeger;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Services.SparkyInitializer;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

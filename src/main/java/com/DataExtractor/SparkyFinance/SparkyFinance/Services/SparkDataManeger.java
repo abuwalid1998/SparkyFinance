@@ -1,6 +1,6 @@
-package Services;
+package com.DataExtractor.SparkyFinance.SparkyFinance.Services;
 
-import Helpers.DataCleaner;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Helpers.DataCleaner;
 import org.apache.spark.sql.SparkSession;
 
 public class SparkDataManeger {

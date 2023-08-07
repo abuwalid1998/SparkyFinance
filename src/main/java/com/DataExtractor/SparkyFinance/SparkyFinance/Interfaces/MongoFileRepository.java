@@ -1,7 +1,7 @@
-package Interfaces;
+package com.DataExtractor.SparkyFinance.SparkyFinance.Interfaces;
 
 
-import Models.FileEntity;
+import com.DataExtractor.SparkyFinance.SparkyFinance.Models.FileEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

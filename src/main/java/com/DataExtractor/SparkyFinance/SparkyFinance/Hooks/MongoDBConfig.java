@@ -1,4 +1,4 @@
-package Hooks;
+package com.DataExtractor.SparkyFinance.SparkyFinance.Hooks;
 
 
 import org.springframework.context.annotation.Configuration;

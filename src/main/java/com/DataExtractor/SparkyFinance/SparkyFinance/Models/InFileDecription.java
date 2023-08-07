@@ -1,4 +1,4 @@
-package Models;
+package com.DataExtractor.SparkyFinance.SparkyFinance.Models;
 
 
 import lombok.*;
