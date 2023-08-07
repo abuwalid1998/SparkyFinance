@@ -2,8 +2,9 @@ package Controller;
 
 
 import FileManger.FileTools;
-import Models.InFileDecription;
+import Models.ResponseMessage;
 import Models.SparkyConfig;
+import Services.FileServiceMongo;
 import Services.SparkDataManeger;
 import Services.SparkyInitializer;
 import org.apache.spark.sql.SparkSession;
@@ -13,17 +14,29 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @RestController
 @RequestMapping("/Sparky")
 public class MainController {
 
-    final SparkyInitializer sparkystarter = new SparkyInitializer();
+
+
+    SparkyInitializer sparkystarter;
+
+
     SparkSession sparkSession;
+
+
     FileTools fileTools;
+
+
+
+    private final FileServiceMongo fileServiceMongo;
+
+    public MainController(FileServiceMongo fileServiceMongo) {
+        this.fileServiceMongo = fileServiceMongo;
+    }
+
 
     @GetMapping("/StartSparkyServer")
     public ResponseEntity<String> StartSpark(@RequestBody SparkyConfig sparkyConfig) {
@@ -53,26 +66,18 @@ public class MainController {
     }
 
     @PostMapping(value = "/SaveFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<InFileDecription> GetFile(@RequestParam("file") MultipartFile infile) {
+    @CrossOrigin(origins = "http://localhost:9110")
+    public ResponseEntity<ResponseMessage> GetFile(@RequestParam("file") MultipartFile infile) {
 
         try {
-
-            fileTools = new FileTools();
-            String FileSize = "File Size : " + infile.getSize();
-
-
-            InFileDecription fileDecription = new InFileDecription(
-                    infile.getName(),
-                    FileSize,
-                    fileTools.getFileExtension(infile.getOriginalFilename()),
-                    "File Imported Successfully"
-            );
-
-            return ResponseEntity.ok(fileDecription);
+            fileServiceMongo.saveFile(infile);
+            return ResponseEntity.ok(new ResponseMessage("File Saved Successfully"));
 
         }catch (Exception e){
 
-           return ResponseEntity.ok(new InFileDecription("Not Found","0 MB","NULL",e.getMessage()));
+
+            System.out.println(e.getMessage());
+           return ResponseEntity.ok(new ResponseMessage("File Not Saved :- Error Happen"));
 
         }
 
