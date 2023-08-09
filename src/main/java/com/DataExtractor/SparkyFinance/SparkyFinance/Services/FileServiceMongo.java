@@ -28,4 +28,15 @@ public class FileServiceMongo {
     public FileEntity getFileById(String fileId) {
         return mongoFileRepository.findById(fileId).orElse(null);
     }
+
+    public boolean getFileByName(String filename){
+
+        FileEntity file = mongoFileRepository.getFileEntitiesByFileName(filename);
+        return file != null;
+
+    }
+
+    public FileEntity getFileEntitiesByFileName(String filename) {
+        return mongoFileRepository.getFileEntitiesByFileName(filename);
+    }
 }

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MongoFileRepository extends MongoRepository<FileEntity, String> {
 
-    public String getFileEntitiesByFileName(String filename);
+    public FileEntity getFileEntitiesByFileName(String filename);
 
 }
