@@ -1,12 +1,19 @@
 package com.DataExtractor.SparkyFinance.SparkyFinance.Helpers;
 
+import com.DataExtractor.SparkyFinance.SparkyFinance.Services.FileServiceMongo;
 import lombok.NoArgsConstructor;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
 @NoArgsConstructor
 public class DataCleaner {
+
+
+
+    FileServiceMongo fileServiceMongo;
 
 
     public boolean cleanExcelData(String filePath,SparkSession spark) {
@@ -22,11 +29,11 @@ public class DataCleaner {
 
             System.setProperty("org.codehaus.janino.debug", "true");
 
-            System.out.println("Data cleaning completed and saved to " + filePath);
+//            System.out.println("Data cleaning completed and saved to " + filePath);
             // Write the cleaned data to the same Excel file
-            writeDataFrameToExcel(df,"Files/output.xlsx");
+//            writeDataFrameToExcel(df,"Files/output.xlsx");
 
-            System.out.println("Data cleaning completed and saved to " + filePath);
+            System.out.println("Data cleaning completed and saved to MongoDB");
             spark.stop();
 
             return true;

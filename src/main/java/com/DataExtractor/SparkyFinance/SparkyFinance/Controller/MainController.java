@@ -44,6 +44,8 @@ public class MainController {
         try {
 
 
+            sparkystarter = new SparkyInitializer();
+
 
             System.out.println(sparkyConfig.getAppname());
             System.out.println(sparkyConfig.getMaster());
@@ -64,7 +66,6 @@ public class MainController {
 
 
     }
-
     @PostMapping(value = "/SaveFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @CrossOrigin(origins = "http://localhost:9110")
     public ResponseEntity<ResponseMessage> GetFile(@RequestParam("file") MultipartFile infile) {
@@ -83,7 +84,6 @@ public class MainController {
 
     }
 
-
     @PostMapping(value = "/ScanFile",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> Scanfile(@RequestParam("file") MultipartFile file) throws IOException {
 
@@ -94,7 +94,11 @@ public class MainController {
 
             System.out.println("Readed File :- " + filepath);
 
-            return ResponseEntity.ok(maneger.CleanData(filepath,sparkSession));
+            String result  = maneger.CleanData(filepath,sparkSession);
+
+            fileServiceMongo.saveFile(file);
+
+            return ResponseEntity.ok(result);
 
         }catch (Exception e){
 
@@ -103,5 +107,8 @@ public class MainController {
         }
 
     }
+
+
+
 
 }
