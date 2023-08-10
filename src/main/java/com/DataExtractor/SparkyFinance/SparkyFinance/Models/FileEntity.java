@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.InputStream;
 
 @Document(collection="files")
 @Setter
@@ -19,7 +20,8 @@ public class FileEntity {
     private String id;
 
     private String fileName;
-    private byte[] fileContent;
-
+    private String contentType;
+    private long size;
+    private byte[] data;
 
 }
